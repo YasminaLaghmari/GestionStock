@@ -121,6 +121,45 @@ namespace GestionStock.Infrastructure.Migrations
                     b.ToTable("Produit");
                 });
 
+            modelBuilder.Entity("GestionStock.Domain.Model.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("PasswordHash")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("isAdmin")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("isAgent")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("isManager")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("isUser")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("GestionStock.Domain.Model.Commande", b =>
                 {
                     b.HasOne("GestionStock.Domain.Model.Client", "Client")

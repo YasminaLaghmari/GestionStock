@@ -11,7 +11,7 @@ namespace GestionStock.Infrastructure.Repositories
     {
         public ClientRepository(GestionStockContext context) : base(context)
         {
-
+            
         }
     }
 }

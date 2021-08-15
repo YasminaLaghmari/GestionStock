@@ -1,5 +1,6 @@
 ﻿using GestionStock.Domain.Model;
 using GestionStock.Domain.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -18,6 +19,7 @@ namespace GestionDeStock.API.Controllers
         {
             _serviceClient = serviceClient;
         }
+        //[Authorize(Roles = "Manager")]
         [HttpPost]
         public ActionResult<Client> AddClient(Client client)
         {

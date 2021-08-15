@@ -20,34 +20,8 @@ namespace GestionDeStock.API.Controllers
         {
             _serviceCommande = serviceCommande;
         }
-        [HttpPost]
-        public ActionResult CreateCommande(ModelCreateCommande model)
-        {
-            var client = new Client
-            {
-                Nom = model.client.Nom,
-                Prenom = model.client.Prenom,
-                Adresse = model.client.Adresse
-            };
-            var commande = new Commande
-            {
-                Client = client,
-
-                DteCommande = DateTime.Now,
-                Total = 154
-            };
-
-            var ligneCommandes = new List<LignesCommande>();
-            foreach (var ligne in model.CommandeLignes)
-            {
-                var ligneCommande = new LignesCommande
-                {
-                    IdProduit = ligne.IdProduit,
-                    Quantite = ligne.quantite
-                };
-                ligneCommandes.Add(ligneCommande);
-            }
-            _serviceCommande.CreateCommandeAvecClient(client,commande, ligneCommandes);
-        }
+        
+       
+        
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GestionStock.Infrastructure.Migrations
 {
-    public partial class createTable : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -23,7 +23,7 @@ namespace GestionStock.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Produits",
+                name: "Produit",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -34,7 +34,28 @@ namespace GestionStock.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Produits", x => x.Id);
+                    table.PrimaryKey("PK_Produit", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Username = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PasswordHash = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    PasswordSalt = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    isAdmin = table.Column<bool>(type: "bit", nullable: false),
+                    isManager = table.Column<bool>(type: "bit", nullable: false),
+                    isUser = table.Column<bool>(type: "bit", nullable: false),
+                    isAgent = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -82,9 +103,9 @@ namespace GestionStock.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_LignesCommande_Produits_ProduitId",
+                        name: "FK_LignesCommande_Produit_ProduitId",
                         column: x => x.ProduitId,
-                        principalTable: "Produits",
+                        principalTable: "Produit",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -111,10 +132,13 @@ namespace GestionStock.Infrastructure.Migrations
                 name: "LignesCommande");
 
             migrationBuilder.DropTable(
+                name: "Users");
+
+            migrationBuilder.DropTable(
                 name: "Commande");
 
             migrationBuilder.DropTable(
-                name: "Produits");
+                name: "Produit");
 
             migrationBuilder.DropTable(
                 name: "Client");

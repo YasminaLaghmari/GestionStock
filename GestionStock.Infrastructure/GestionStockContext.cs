@@ -10,10 +10,11 @@ namespace GestionStock.Infrastructure
 {
     public class GestionStockContext:DbContext
     {
-        public DbSet<Client>Clients { get; }
-        public DbSet<Commande> Commandes { get; }
-        public DbSet<Produit> Produits { get; }
-        public DbSet<LignesCommande> LigneCommandes { get; }
+        public DbSet<Client>Clients { get; set; }
+        public DbSet<Commande> Commandes { get; set; }
+        public DbSet<Produit> Produits { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<LignesCommande> LigneCommandes { get; set; }
         public GestionStockContext(DbContextOptions<GestionStockContext>context)
             : base(context)
         {

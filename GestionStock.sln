@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionDeStock.API", "GestionDeStock.API\GestionDeStock.API.csproj", "{A7EA7AD1-80F4-4A1E-A73E-8DFE2C87804C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestionDeStock.API", "GestionDeStock.API\GestionDeStock.API.csproj", "{A7EA7AD1-80F4-4A1E-A73E-8DFE2C87804C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{587B4BD2-095D-48D9-B282-FC0B7DB086A6}"
 EndProject
@@ -11,13 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{D8
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GestionStock", "GestionStock", "{6A0C4741-D135-4EC8-B4A2-ACE785806E54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionStock.Domain", "GestionStock.Domain\GestionStock.Domain.csproj", "{FC48BD46-4C11-4636-B00C-2D9270E51534}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestionStock.Domain", "GestionStock.Domain\GestionStock.Domain.csproj", "{FC48BD46-4C11-4636-B00C-2D9270E51534}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionStock.Infrastructure", "GestionStock.Infrastructure\GestionStock.Infrastructure.csproj", "{55C22AE7-D04B-42B3-BF05-328DC8B3B8D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestionStock.Infrastructure", "GestionStock.Infrastructure\GestionStock.Infrastructure.csproj", "{55C22AE7-D04B-42B3-BF05-328DC8B3B8D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionStock.Service", "GestionStock.Service\GestionStock.Service.csproj", "{4E724042-37B0-4549-BA79-CC89405D1E8F}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{08138A81-886F-49F3-A1CA-D5817F3E3A46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestionStock.Service", "GestionStock.Service\GestionStock.Service.csproj", "{4E724042-37B0-4549-BA79-CC89405D1E8F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,7 +50,6 @@ Global
 		{FC48BD46-4C11-4636-B00C-2D9270E51534} = {6A0C4741-D135-4EC8-B4A2-ACE785806E54}
 		{55C22AE7-D04B-42B3-BF05-328DC8B3B8D4} = {6A0C4741-D135-4EC8-B4A2-ACE785806E54}
 		{4E724042-37B0-4549-BA79-CC89405D1E8F} = {6A0C4741-D135-4EC8-B4A2-ACE785806E54}
-		{08138A81-886F-49F3-A1CA-D5817F3E3A46} = {587B4BD2-095D-48D9-B282-FC0B7DB086A6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DBD5175C-4D0B-460E-AF52-AB4E8AC4B611}

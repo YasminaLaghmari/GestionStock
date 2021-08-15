@@ -9,6 +9,8 @@ namespace GestionStock.Infrastructure.Repositories
 {
     public class ProduitRepository : Repository<Produit>
     {
+       
+        
         public ProduitRepository(GestionStockContext context) : base(context)
         {
 

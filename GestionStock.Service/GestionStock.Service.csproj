@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GestionStock.Domain\GestionStock.Domain.csproj" />
+    <ProjectReference Include="..\GestionStock.Infrastructure\GestionStock.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

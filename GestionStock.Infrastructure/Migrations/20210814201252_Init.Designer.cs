@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GestionStock.Infrastructure.Migrations
 {
     [DbContext(typeof(GestionStockContext))]
-    [Migration("20210806150127_ajoutProduit")]
-    partial class ajoutProduit
+    [Migration("20210814201252_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -121,6 +121,45 @@ namespace GestionStock.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Produit");
+                });
+
+            modelBuilder.Entity("GestionStock.Domain.Model.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("PasswordHash")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("isAdmin")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("isAgent")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("isManager")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("isUser")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("GestionStock.Domain.Model.Commande", b =>
