@@ -36,6 +36,7 @@ namespace GestionDeStock.API.Controllers
         [HttpPost("authenticate")]
         public async Task<IActionResult> Authenticate(UserModel userResource)
         {
+            
             var user = await _serviceUser.Authenticate(userResource.Username, userResource.Password);
             if (user == null) return BadRequest(new { message = "Username or password is incorrect" });
 
@@ -125,11 +126,32 @@ namespace GestionDeStock.API.Controllers
             });
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// 
 
+        [HttpGet]
         public async Task<IEnumerable<User>> getAllUser()
         {
               return await _userClient.GetAll();
             
+        }
+        [HttpDelete]
+        public void DeleteUser(int id)
+        {
+               _userClient.Delete(id);
+        }
+        [HttpPost]
+        public void UpdateUser(UserModel userResource, string password)
+        {
+            var user = new User();
+            user.Id = userResource.Id;
+            user.FirstName = userResource.FirstName;
+            user.Username = userResource.Username;
+            user.LastName = userResource.LastName;
+            _userClient.Update(user,password);
         }
         
 

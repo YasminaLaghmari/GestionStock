@@ -16,6 +16,7 @@ namespace GestionDeStock.API.Validator
             RuleFor(x => x.LastName).NotNull();
             RuleFor(x => x.Username).NotNull();
             RuleFor(x => x.Password).NotNull();
+            //RuleFor(x => x.PasswordSalt).NotNull();
             RuleFor(x => x.IsAdmin).NotNull();
             RuleFor(x => x.isAgent).NotNull();
             RuleFor(x => x.isManager).NotNull();
