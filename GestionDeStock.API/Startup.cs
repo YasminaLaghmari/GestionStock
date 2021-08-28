@@ -1,5 +1,6 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using GestionDeStock.API.ConfigStartup;
 using GestionDeStock.API.Models;
 using GestionDeStock.API.Validator;
 using GestionStock.Domain.Interface;
@@ -8,6 +9,7 @@ using GestionStock.Domain.Services;
 using GestionStock.Infrastructure;
 using GestionStock.Infrastructure.Repositories;
 using GestionStock.Service;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -44,21 +46,9 @@ namespace GestionDeStock.API
                     x=>x.MigrationsAssembly("GestionStock.Infrastructure"));
             });
 
-           
-            //Dependacy injection 
-            services.AddTransient<IRepository<Client>,ClientRepository>();
-            services.AddTransient<IRepository<Produit>, ProduitRepository>();
-            services.AddTransient<IRepository<Commande>, CommandeRepository>();
-            services.AddTransient<IRepository<LignesCommande>, LignesCommandeRepository>();
+            services.AddInjectionsRepository();
 
-
-            services.AddTransient<IUserRepository, UserRepository>();
-
-            services.AddTransient<IClientService,ClientService>();
-            services.AddTransient<IProduitService,ProduitService>();
-            services.AddTransient<ICommandeService,CommandeService>();
-            services.AddTransient<ILignesCommandeService,LignesCommandeService>();
-            services.AddTransient<IUserService, UserService>();
+            services.AddMediatR(typeof(Startup));
 
             services.AddControllersWithViews();
             services.AddSwaggerGen(c =>
@@ -66,12 +56,7 @@ namespace GestionDeStock.API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Gestion de commande.API", Version = "v1" });
             });
 
-
-            
-
-
-            //key JWT
-
+            //key jwt
             var key = Encoding.ASCII.GetBytes(Configuration.GetValue<string>("AppSettings:Secret"));
 
             //REFERENCE JWT
@@ -108,12 +93,11 @@ namespace GestionDeStock.API
                 };
             });
 
-           
-            services.AddFluentValidation();
 
-            services.AddTransient<IValidator<ClientModel>, ClientModelValidator>();
-            services.AddTransient<IValidator<LigneCommandeModel>, LigneCommandeModelValidator>();
-            services.AddTransient<IValidator<UserModel>, UserModelValidator>();
+
+           
+
+            services.AddValidation();
 
 
 
@@ -149,6 +133,7 @@ namespace GestionDeStock.API
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+            app.UseMiddleware<HttpsRedirectionMiddleware>();
         }
     }
 }

@@ -15,6 +15,7 @@ namespace GestionStock.Infrastructure
         public DbSet<Produit> Produits { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<LignesCommande> LigneCommandes { get; set; }
+        public DbSet<ReRouting> Reroutings { get; set; }
         public GestionStockContext(DbContextOptions<GestionStockContext>context)
             : base(context)
         {

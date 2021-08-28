@@ -1,5 +1,9 @@
-﻿using GestionStock.Domain.Model;
+﻿using GestionDeStock.API.Applications.Commands;
+using GestionDeStock.API.Applications.Queries;
+using GestionDeStock.API.Models;
+using GestionStock.Domain.Model;
 using GestionStock.Domain.Services;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,29 +19,42 @@ namespace GestionDeStock.API.Controllers
     public class ClientController : ControllerBase
     {
         private readonly IClientService _serviceClient;
-        public ClientController(IClientService serviceClient)
+        private readonly IMediator _mediator;
+        public ClientController(IMediator mediator,IClientService serviceClient)
         {
             _serviceClient = serviceClient;
+            _mediator = mediator;
         }
         //[Authorize(Roles = "Manager")]
         [HttpPost]
-        public ActionResult<Client> AddClient(Client client)
+        public async  Task<IActionResult> AddClient(ClientModel client)
         {
-            try
+            IActionResult result = this.BadRequest();
+            //try
+            //{
+            //    var clientCreated = _serviceClient.CreateClient(client);
+            //    return Ok(clientCreated);
+            //}
+            //catch (Exception ex)
+            //{
+            //    return BadRequest(ex.Message);
+            //}
+           var item =  await this._mediator.Send(new AddClientCommand() { Item = client});
+            if (item != null)
             {
-                var clientCreated = _serviceClient.CreateClient(client);
-                return Ok(clientCreated);
+                result = this.Ok(item);
             }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+
+            return result;
+
+
         }
         [HttpGet]
         public ActionResult<IEnumerable<Client>> GetAll()
         {
-            var clients = _serviceClient.GetAllClients();
-            return Ok(clients);
+            //var clients = _serviceClient.GetAllClients();
+            var model = this._mediator.Send(new SelectAllClientQuery());
+            return Ok(model);
         }
         [HttpGet("{id}")]
         public ActionResult<Client>GetById(int id)
