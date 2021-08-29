@@ -52,9 +52,9 @@ namespace GestionDeStock.API.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Client>> GetAll()
         {
-            //var clients = _serviceClient.GetAllClients();
-            var model = this._mediator.Send(new SelectAllClientQuery());
-            return Ok(model);
+            var clients = _serviceClient.GetAllClients();
+            //var model = this._mediator.Send(new SelectAllClientQuery());
+            return Ok(clients);
         }
         [HttpGet("{id}")]
         public ActionResult<Client>GetById(int id)

@@ -10,6 +10,6 @@ namespace GestionDeStock.API.Applications.Queries
 {
     public class SelectAllClientQuery : IRequest<List<ClientModel>>
     {
-        
+        public ClientModel Item { get;  set; }
     }
 }

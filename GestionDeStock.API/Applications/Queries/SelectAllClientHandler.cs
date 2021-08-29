@@ -20,11 +20,13 @@ namespace GestionDeStock.API.Applications.Queries
             this._serviceClient = _client;
         }
 
-        
         public Task<List<ClientModel>> Handle(SelectAllClientQuery request, CancellationToken cancellationToken)
         {
-            return (Task<List<ClientModel>>)_serviceClient.GetAllClients();
-            
+            throw new NotImplementedException();
         }
+
+       
+
+        
     }
 }
